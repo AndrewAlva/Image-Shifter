@@ -28,7 +28,7 @@ var FollowObject = function(args){
 	this.obj = args.obj;
 	this.imgCanvas = this.obj.querySelector('.imgs-canvas');
 	this.imgTriggers = this.obj.querySelectorAll('.img-trigger');
-	this.imgs = this.imgCanvas.querySelectorAll('img');
+	this.imgs = this.imgCanvas.querySelectorAll('img, video');
 	this.pos = {
 		x: window.innerWidth/2,
 		y: window.innerHeight/2
@@ -41,7 +41,8 @@ var FollowObject = function(args){
 	};
 
 	this.displaceImgs = function(){
-		var _displacement = "translate(" + this.pos.x + "px, " + this.pos.y + "px)";
+		var _displacement = "translate( 700px, " + this.pos.y + "px)";
+		// var _displacement = "translate(" + this.pos.x + "px, " + this.pos.y + "px)";
 		this.applyTransform(_displacement);
 	};
 
@@ -98,6 +99,7 @@ var FollowObject = function(args){
 	this.init = function(){
 		this.setupListeners();
 		this.displaceImgs();
+		console.log(this.imgs)
 	};
 }
 
