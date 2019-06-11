@@ -1,0 +1,102 @@
+/* Mixins */
+	@mixin transitions-ease($timing){
+		-webkit-transition: all $timing cubic-bezier(.3,0,.2,1);
+			-moz-transition: all $timing cubic-bezier(.3,0,.2,1);
+			 -ms-transition: all $timing cubic-bezier(.3,0,.2,1);
+			  -o-transition: all $timing cubic-bezier(.3,0,.2,1);
+				  transition: all $timing cubic-bezier(.3,0,.2,1);
+	}
+	@mixin translate($Xmove, $Ymove){
+		-webkit-transform: translate($Xmove, $Ymove);
+		-moz-transform: translate($Xmove, $Ymove);
+		-ms-transform: translate($Xmove, $Ymove);
+		-o-transform: translate($Xmove, $Ymove);
+		transform: translate($Xmove, $Ymove);
+	}
+	@font-face {
+		font-family: 'Saol-L';
+		font-display: auto;
+		src:url('../fonts/SaolDisplay-LightItalic.otf') format('opentype');
+	}
+	@font-face {
+		font-family: 'Saol';
+		font-display: auto;
+		src:url('../fonts/SaolDisplay-Regular.ttf') format('truetype');
+	}
+/* End of Mixins */
+
+
+#mbrt__img-shifter{
+	position: relative;
+
+	.imgs-canvas{
+		position: fixed;
+		top: 0; left: 0;
+
+		&.active{
+			z-index: 99;
+		}
+		
+		img{
+			vertical-align: top;
+			position: absolute;
+			z-index: -1;
+			top: 50%;
+			left: 0%;
+			@include translate(-50%, -50%);
+			opacity: 0;
+			@include transitions-ease(.2s);
+			
+			&.active{
+				opacity: .9;
+			}
+		}
+	}
+	
+	.list-wrap{
+		position: relative;
+		padding: 0;
+		margin: 0;
+	}
+
+	.img-trigger{
+		z-index: 1;
+		position: relative;
+		display: inline;
+		padding: 0 20px;
+		line-height: 1em;
+		margin: 0;
+		cursor: pointer;
+		opacity: 0.1;
+		
+		&:hover{
+			z-index: 999;
+			opacity: 1;
+		}
+	}
+}
+
+
+
+// General style, not needed
+body{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	font-family: 'Saol-L';
+	font-style: italic;
+	display:flex;
+	align-items: center;
+	text-align: center;
+
+	background-color: #fff;
+	color: #111;
+}
+ul{
+	list-style-type: none;
+	li{
+		font-size: 9vw;
+		letter-spacing: -5px;
+		-webkit-font-smoothing: antialiased;
+	}
+}
